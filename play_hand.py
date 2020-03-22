@@ -1,5 +1,6 @@
 from cards import extra_card
 from check import hand_value_check
+from check import check_21
 from dealer import dealer_rules
 from continue_hand import continue_hand
 
@@ -18,7 +19,9 @@ def play_hand(player_cards, dealer_cards):
 	while (continue_hand(input()) == True):
 		player_cards = extra_card(player_cards)
 		dealer_cards = dealer_rules(dealer_cards)
-		if (sum(player_cards) < 21 and sum(dealer_cards) < 21):
+		if (check_21(sum(player_cards), sum(dealer_cards))):
+			return(False)
+		if (sum(player_cards) <= 21 and sum(dealer_cards) <= 21):
 			print(player_cards, f'your current hand is worth: {sum(player_cards)}')
 			print(dealer_cards, f'dealer current hand is worth: {sum(dealer_cards)}')
 		if (hand_value_check(player_cards, dealer_cards) == False):
