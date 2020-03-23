@@ -13,7 +13,8 @@ def blackjack():
 	if (saw(input()) == False):
 		return
 	player_cards = list(first_two_cards())
-	dealer_cards = list(first_two_cards())
+	# dealer_cards = list(first_two_cards())
+	dealer_cards = [11, 6]
 	print(player_cards, f'your current hand is worth: {sum(player_cards)}')
 	print(dealer_cards, f'dealer current hand is worth: {sum(dealer_cards)}')
 	if (check_21(sum(player_cards), sum(dealer_cards))):

@@ -18,7 +18,7 @@ def play_hand(player_cards, dealer_cards):
 	print('Do you wish to continue?')
 	while (continue_hand(input()) == True):
 		player_cards = extra_card(player_cards)
-		dealer_cards = dealer_rules(dealer_cards)
+		dealer_cards = dealer_rules(player_cards, dealer_cards)
 		if (check_21(sum(player_cards), sum(dealer_cards))):
 			return(False)
 		if (sum(player_cards) <= 21 and sum(dealer_cards) <= 21):
