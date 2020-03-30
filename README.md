@@ -5,6 +5,7 @@ The goal of the blackjack is to win from the dealer by get the highest total but
 
 # usage
  run the following command to play a game of blackjack against the computer in your terminal:
-  - python3 blackjack.py
-  
+ ```
+ $ python3 blackjack.py
+ ``` 
 ![](.display.gif)
