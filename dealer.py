@@ -1,5 +1,6 @@
 import random
 from cards import extra_card
+from cards import calc_value_cards
 
 def calc_play_card(player_cards, dealer_cards):
 	"""[checks if random number given in if statement is equal to 2 to continue with an extra card,
@@ -27,7 +28,7 @@ def dealer_rules(player_cards, dealer_cards):
 	Returns:
 		[list] -- [return new list with append card(interger) or existing list]
 	"""
-	if(sum(dealer_cards) < 17):
+	if(calc_value_cards(dealer_cards) < 17):
 		dealer_cards = extra_card(dealer_cards)
 		return(dealer_cards)
 	#function that calculates the changes to win if get a new card

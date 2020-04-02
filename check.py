@@ -1,28 +1,4 @@
-def check_value(*hand):
-	"""
-	[check_values checks if the values of the given hand(cards) are equal to ten,
-	if that's the case it will randomly make it to a Jack, Queen or King.
-	If card value is equal to 11 it will convert it into an ace]
-
-	Returns:
-		[string] -- [returns string with the converted card values in it]
-	"""
-	result = ''
-	values = 'JQK10'
-	high_value = None
-	for card in hand:
-		if (card == 10):
-			high_value = random.sample(values, 1)
-			for item in high_value:
-				if (item == '0' or item == '1'):
-					item = '10'
-				result += item
-		elif(card == 11):
-			result += 'A'
-		else:
-			result += str(card)
-		result += ' '
-	return result.strip()
+from cards import calc_value_cards
 
 def hand_value_check(player_cards, dealer_cards):
 	"""[checks if the hand(interger list) of player and dealer are lower the man blackjack value: 21
@@ -35,24 +11,26 @@ def hand_value_check(player_cards, dealer_cards):
 	Returns:
 		[boolean] -- [True if none of player or dealer busted, else it returns false]
 	"""
-	if (sum(dealer_cards) > 21 or sum(player_cards) > 21):
-		if(sum(dealer_cards) > 21 and sum(player_cards) > 21):
+	if (check_21(player_cards, dealer_cards) == True):
+		return (False)
+	if (dealer_cards > 21 or player_cards > 21):
+		if(dealer_cards > 21 and player_cards > 21):
 			print('BOTH YOU AND DEALER BUSTED')
-			print(player_cards, f'your current hand is worth: {sum(player_cards)}')
-			print(dealer_cards, f'your current hand is worth: {sum(dealer_cards)}')
+			print(player_cards, f'your current hand is worth: {player_cards}')
+			print(dealer_cards, f'your current hand is worth: {dealer_cards}')
 			return (False)
-		elif(sum(player_cards) > 21):
+		elif(player_cards > 21):
 			print('YOU BUST')
-			print(player_cards, f'your current hand is worth: {sum(player_cards)}')
-			print(dealer_cards, f'your current hand is worth: {sum(dealer_cards)}')
+			print(player_cards, f'your current hand is worth: {player_cards}')
+			print(dealer_cards, f'your current hand is worth: {dealer_cards}')
 			return (False)
 		else:
 			print('YOU WON!!! DEALER BUSTED')
-			print(player_cards, f'your current hand is worth: {sum(player_cards)}')
-			print(dealer_cards, f'your current hand is worth: {sum(dealer_cards)}')
+			print(player_cards, f'your current hand is worth: {player_cards}')
+			print(dealer_cards, f'your current hand is worth: {dealer_cards}')
 			return (False)
-		print(player_cards, f'your current hand is worth: {sum(player_cards)}')
-		print(dealer_cards, f'your current hand is worth: {sum(dealer_cards)}')
+		print(player_cards, f'your current hand is worth: {player_cards}')
+		print(dealer_cards, f'your current hand is worth: {dealer_cards}')
 	return (True)
 
 def check_21(hand_player, hand_dealer):
