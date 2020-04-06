@@ -16,10 +16,8 @@ def play_hand(player_cards, dealer_cards):
 	Returns:
 		[boolean] -- [True if hand is continued with valid card values, else it returns false]
 	"""
-	print('Do you wish to continue?')
-	while (continue_hand(input()) == True):
+	while (continue_hand(input('Do you wish to continue?\n')) == True):
 		player_cards = extra_card(player_cards)
-		dealer_cards = dealer_rules(player_cards, dealer_cards)
 		if (check_21(calc_value_cards(player_cards), calc_value_cards(dealer_cards))):
 			return(False)
 		if (calc_value_cards(player_cards) <= 21 and calc_value_cards(dealer_cards) <= 21):
@@ -27,5 +25,5 @@ def play_hand(player_cards, dealer_cards):
 			print(dealer_cards, f'dealer current hand is worth: {calc_value_cards(dealer_cards)}')
 		if (hand_value_check(calc_value_cards(player_cards), calc_value_cards(dealer_cards)) == False):
 			return(False)
-		print('Do you wish to continue?')
-	return(True)
+		# print('Do you wish to continue?')
+	return (False)

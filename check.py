@@ -39,7 +39,10 @@ def check_21(hand_player, hand_dealer):
 	Arguments:
 		value {[boolean]} -- [returns True if value is equal to 21 else it returns False]
 	"""
-	if (hand_dealer == 21):
+	if (hand_dealer == 21 and hand_player == 21):
+		print(f'DRAW both have 21: {hand_dealer} {hand_player}')
+		return(True)
+	elif (hand_dealer == 21):
 		print(f'DEALER WON WITH: {hand_dealer}')
 		return(True)
 	elif (hand_player == 21):
@@ -55,16 +58,16 @@ def check_winner(hand_player, hand_dealer):
 		hand_dealer {[int]} -- [total value of the hand]
 
 	Returns:
-		[boolean] -- [returns True if there is a winner or a draw else returns False]
+		[None] -- [returns none value]
 	"""
 	if (check_21(hand_dealer, hand_player) == True):
-		return(True)
+		return
 	elif (hand_dealer > hand_player):
 		print(f'DEALER WON WITH: {hand_dealer}')
-		return(True)
+		return
 	elif(hand_dealer == hand_player):
 		print(f'you both ended with the same hand: {hand_dealer} {hand_player}')
-		return(True)
+		return
 	print(f'YOU WON WITH: {hand_player}')
-	return(False)
+	return
 
