@@ -4,7 +4,7 @@ from check import hand_value_check
 from check import check_21
 from dealer import dealer_rules
 from continue_hand import continue_hand
-
+from print_cards import print_cards
 
 def play_hand(player_cards, dealer_cards):
 	"""[summary]
@@ -19,8 +19,7 @@ def play_hand(player_cards, dealer_cards):
 	while (continue_hand(input('Do you wish to continue?\n')) == True):
 		player_cards = extra_card(player_cards)
 		if (calc_value_cards(player_cards) <= 21 and calc_value_cards(dealer_cards) <= 21):
-			print(player_cards, f'your current hand is worth: {calc_value_cards(player_cards)}')
-			print(dealer_cards, f'dealer current hand is worth: {calc_value_cards(dealer_cards)}')
+			print_cards(calc_value_cards(player_cards), calc_value_cards(dealer_cards))
 		else:
 			break
 	return (False)

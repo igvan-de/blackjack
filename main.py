@@ -6,10 +6,7 @@ from check import check_winner
 from check import check_21
 from dealer import dealer_rules
 from play_hand import play_hand
-
-def print_cards(player, dealer):
-		print(player, f'your current hand is worth: {calc_value_cards(player)}')
-		print(dealer, f'dealer current hand is worth: {calc_value_cards(dealer)}')
+from print_cards import print_cards
 
 def blackjack():
 	"""[main program that runs all combined functions step by step to play blackjack against dealer(computer)]
@@ -18,7 +15,7 @@ def blackjack():
 		return
 	player_cards = list(first_two_cards())
 	dealer_cards = list(first_two_cards())
-	print_cards(player_cards, dealer_cards)
+	print_cards(calc_value_cards(player_cards), calc_value_cards(dealer_cards))
 	if (hand_value_check(calc_value_cards(player_cards), calc_value_cards(dealer_cards)) == False):
 		return
 	while True:
@@ -28,7 +25,7 @@ def blackjack():
 			break
 	if (calc_value_cards(player_cards) <= 21):
 		dealer_cards = dealer_rules(dealer_cards)
-	print_cards(player_cards, dealer_cards)
+	print_cards(calc_value_cards(player_cards), calc_value_cards(dealer_cards))
 	if (hand_value_check(calc_value_cards(player_cards), calc_value_cards(dealer_cards)) == False):
 		return
 	check_winner(calc_value_cards(player_cards), calc_value_cards(dealer_cards))

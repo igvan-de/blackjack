@@ -1,4 +1,5 @@
 from cards import calc_value_cards
+from print_cards import print_cards
 
 def hand_value_check(player_cards, dealer_cards):
 	"""[checks if the hand(interger list) of player and dealer are lower the man blackjack value: 21
@@ -16,21 +17,17 @@ def hand_value_check(player_cards, dealer_cards):
 	if (dealer_cards > 21 or player_cards > 21):
 		if(dealer_cards > 21 and player_cards > 21):
 			print('BOTH YOU AND DEALER BUSTED')
-			print(player_cards, f'your current hand is worth: {player_cards}')
-			print(dealer_cards, f'your current hand is worth: {dealer_cards}')
+			print_cards(player_cards, dealer_cards)
 			return (False)
 		elif(player_cards > 21):
 			print('YOU BUST')
-			print(player_cards, f'your current hand is worth: {player_cards}')
-			print(dealer_cards, f'your current hand is worth: {dealer_cards}')
+			print_cards(player_cards, dealer_cards)
 			return (False)
 		else:
 			print('YOU WON!!! DEALER BUSTED')
-			print(player_cards, f'your current hand is worth: {player_cards}')
-			print(dealer_cards, f'your current hand is worth: {dealer_cards}')
+			print_cards(player_cards, dealer_cards)
 			return (False)
-		print(player_cards, f'your current hand is worth: {player_cards}')
-		print(dealer_cards, f'your current hand is worth: {dealer_cards}')
+		print_cards(player_cards, dealer_cards)
 	return (True)
 
 def check_21(hand_player, hand_dealer):
@@ -56,9 +53,6 @@ def check_winner(hand_player, hand_dealer):
 	Arguments:
 		hand_player {[int]} -- [total value of the hand]
 		hand_dealer {[int]} -- [total value of the hand]
-
-	Returns:
-		[None] -- [returns none value]
 	"""
 	if (check_21(hand_dealer, hand_player) == True):
 		return
