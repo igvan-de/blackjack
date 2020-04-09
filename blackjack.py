@@ -12,11 +12,9 @@ def print_cards(player, dealer):
 		print(dealer, f'dealer current hand is worth: {calc_value_cards(dealer)}')
 
 def blackjack():
-	# need to change structure so that player first keep adding cards and when player doens't want to hit any card, dealer will play
 	"""[main program that runs all combined functions step by step to play blackjack against dealer(computer)]
 	"""
-	print('DO YOU WANT TO PLAY A GAME?')
-	if (saw(input()) == False):
+	if (saw(input("DO YOU WANT TO PLAY A GAME?\n")) == False):
 		return
 	player_cards = list(first_two_cards())
 	dealer_cards = list(first_two_cards())
@@ -28,8 +26,11 @@ def blackjack():
 			continue
 		else:
 			break
-	dealer_cards = dealer_rules(dealer_cards)
+	if (calc_value_cards(player_cards) <= 21):
+		dealer_cards = dealer_rules(dealer_cards)
 	print_cards(player_cards, dealer_cards)
+	if (hand_value_check(calc_value_cards(player_cards), calc_value_cards(dealer_cards)) == False):
+		return
 	check_winner(calc_value_cards(player_cards), calc_value_cards(dealer_cards))
 
 if __name__ == "__main__":
