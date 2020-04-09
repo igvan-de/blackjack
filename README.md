@@ -9,4 +9,4 @@ The goal of the blackjack is to win from the dealer by get the highest total but
  $ python3 blackjack.py
  ``` 
 
-
+![](.display.gif)
